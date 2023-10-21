@@ -2,7 +2,7 @@ import csv
 import xml.etree.ElementTree as ET
 import os
 
-csv_file_path = 'hreflang_data.csv'
+csv_file_path = 'hreflang-data.csv'
 output_folder = 'output'
 output_base_name = 'hreflang_sitemap'
 output_counter = 1
