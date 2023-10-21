@@ -82,7 +82,4 @@
     <xhtml:link rel="alternate" hreflang="de-de" href="https://example.de/url-4"/>
     <xhtml:link rel="alternate" hreflang="de-ch" href="https://example.ch/url-4"/>
   </url>
-  <url>
-    <loc>https://example.de/url-5</loc>
-  </url>
 </urlset>
