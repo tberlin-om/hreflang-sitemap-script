@@ -1,9 +1,6 @@
-import os
 import csv
 from xml.etree.ElementTree import Element, SubElement, ElementTree, tostring
 from xml.dom import minidom
-
-OUTPUT_DIR = "./output/"
 
 def prettify(elem):
     rough_string = tostring(elem, 'utf-8')
@@ -44,32 +41,28 @@ def generate_sitemap_from_csv(csv_file, threshold=20000):
         headers = next(reader)
 
         for row in reader:
-            for idx, url in enumerate(row):
-                if url:
-                    url_element = SubElement(urlset, 'url')
-                    loc_element = SubElement(url_element, 'loc')
-                    loc_element.text = url
+            main_url = row[0]
+            url_element = SubElement(urlset, 'url')
+            loc_element = SubElement(url_element, 'loc')
+            loc_element.text = main_url
 
-                    for sub_idx, alternate_url in enumerate(row):
-                        if alternate_url and idx != sub_idx:
-                            xhtml_element = SubElement(url_element, 'xhtml:link', {
-                                'rel': 'alternate',
-                                'hreflang': headers[sub_idx],
-                                'href': alternate_url
-                            })
+            for idx, alternate_url in enumerate(row):
+                if alternate_url and alternate_url != main_url:
+                    xhtml_element = SubElement(url_element, 'xhtml:link', {
+                        'rel': 'alternate',
+                        'hreflang': headers[idx],
+                        'href': alternate_url
+                    })
 
     sitemaps = split_large_sitemaps(urlset, threshold)
 
     return sitemaps
 
-if not os.path.exists(OUTPUT_DIR):
-    os.makedirs(OUTPUT_DIR)
-
 sitemaps = generate_sitemap_from_csv('hreflang-data.csv')
 
 for idx, sitemap in enumerate(sitemaps):
     sitemap_xml = prettify(sitemap)
-    with open(f'{OUTPUT_DIR}sitemap_{idx + 1}.xml', 'w', encoding='utf-8') as file:
+    with open(f'./output/hreflang_sitemap_{idx + 1}.xml', 'w', encoding='utf-8') as file:
         file.write(sitemap_xml)
 
 print(f"{len(sitemaps)} Sitemaps wurden generiert!")
