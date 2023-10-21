@@ -23,7 +23,7 @@ output_base_name = 'hreflang_sitemap'
 output_counter = 1
 max_urls_per_sitemap = 20000
 urlset = ET.Element('urlset', xmlns='https://www.sitemaps.org/schemas/sitemap/0.9', 
-                    attrib={'xmlns:xhtml': 'http://www.w3.org/1999/xhtml'})
+                    attrib={'xmlns:xhtml': 'https://www.w3.org/1999/xhtml'})
 
 url_count = 0
 
