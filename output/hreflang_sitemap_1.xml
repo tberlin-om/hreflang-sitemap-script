@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<urlset xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns:xhtml="https://www.w3.org/1999/xhtml" xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://example.de</loc>
     <xhtml:link hreflang="de-de" rel="alternate" href="https://example.de" />
