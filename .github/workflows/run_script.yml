@@ -11,15 +11,15 @@ jobs:
     
     steps:
     - name: Checkout Repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v3
       with:
         python-version: '3.x'
 
     - name: Install Dependencies
-      run: pip install -r requirements.txt # Wenn Sie Abhängigkeiten haben
+      run: pip install -r requirements.txt
 
     - name: Run Python Script
-      run: python your_script.py
+      run: python hreflang_sitemap.py
