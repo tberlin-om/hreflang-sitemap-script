@@ -1,7 +1,7 @@
-﻿de-de;de-at;de-ch
-https://example.de;https://example.at;https://example.ch
-https://example.de/url-1;https://example.at/url-1;https://example.ch/url-1
-https://example.de/url-2;https://example.at/url-2;https://example.ch/url-2
-https://example.de/url-3;https://example.at/url-3;https://example.ch/url-3
-https://example.de/url-4;;https://example.ch/url-4
-https://example.de/url-5;;
+de-de,de-at,de-ch
+https://example.de,https://example.at,https://example.ch
+https://example.de/url-1,https://example.at/url-1,https://example.ch/url-1
+https://example.de/url-2,https://example.at/url-2,https://example.ch/url-2
+https://example.de/url-3,https://example.at/url-3,https://example.ch/url-3
+https://example.de/url-4,,https://example.ch/url-4
+https://example.de/url-5,,
