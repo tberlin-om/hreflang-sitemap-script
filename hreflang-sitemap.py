@@ -19,14 +19,15 @@ with open(csv_file_path, 'r', newline='') as csvfile:
         loc_element = ET.SubElement(url_element, 'loc')
         loc_element.text = url
         
+        hreflang_entries = 0
         for i, lang_code in enumerate(languages[1:]):
             hreflang_url = row[i + 1]
             if hreflang_url and hreflang_url.strip():
                 hreflang_element = ET.SubElement(url_element, 'xhtml:link', hreflang=lang_code, rel='alternate')
                 hreflang_element.set('href', hreflang_url)
+                hreflang_entries += 1
                 
-        # Überprüfen, ob mindestens ein hreflang-Eintrag generiert wurde
-        if any(url_element.iterfind('.//xhtml:link[@rel="alternate"]')):
+        if hreflang_entries > 0:
             output_file = f'{output_folder}/{output_base_name}_{output_counter}.xml'
             tree = ET.ElementTree(urlset)
             tree.write(output_file, encoding='utf-8', xml_declaration=True)
@@ -48,7 +49,6 @@ with open(csv_file_path, 'r', newline='') as csvfile:
             output_counter += 1
             urlset.clear()
 
-# Erstellen Sie die letzte Sitemap-Datei im Ausgabeordner (falls erforderlich)
 if url_count > 0:
     output_file = f'{output_folder}/{output_base_name}_{output_counter}.xml'
     tree = ET.ElementTree(urlset)
