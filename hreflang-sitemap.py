@@ -9,6 +9,8 @@ output_counter = 1
 max_urls_per_sitemap = 20000
 urlset = ET.Element('urlset', xmlns='https://www.sitemaps.org/schemas/sitemap/0.9')
 
+url_count = 0
+
 with open(csv_file_path, 'r', newline='') as csvfile:
     csv_reader = csv.reader(csvfile)
     languages = next(csv_reader)
