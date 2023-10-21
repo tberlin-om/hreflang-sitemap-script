@@ -58,7 +58,6 @@ def generate_sitemap_from_csv(csv_file, threshold=20000):
                             })
                             alternate_count += 1
 
-                    # Add self reference only if there's at least one alternate URL.
                     if alternate_count:
                         xhtml_element = SubElement(url_element, 'xhtml:link', {
                             'rel': 'alternate',
