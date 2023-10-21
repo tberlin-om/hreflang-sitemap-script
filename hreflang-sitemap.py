@@ -11,6 +11,10 @@ urlset = ET.Element('urlset', xmlns='https://www.sitemaps.org/schemas/sitemap/0.
 
 url_count = 0
 
+# Sicherstellen, dass der output-Ordner existiert
+if not os.path.exists(output_folder):
+    os.makedirs(output_folder)
+
 with open(csv_file_path, 'r', newline='') as csvfile:
     csv_reader = csv.reader(csvfile)
     languages = next(csv_reader)
