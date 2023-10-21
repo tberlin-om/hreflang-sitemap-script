@@ -18,3 +18,11 @@ jobs:
 
     - name: Run Python Script
       run: python hreflang-sitemap.py
+      
+    - name: Commit and push if changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add output/*
+        git commit -m "Add generated sitemaps" || echo "No changes to commit"
+        git push
