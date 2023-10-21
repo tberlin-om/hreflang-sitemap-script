@@ -45,9 +45,11 @@ with open(csv_file_path, 'r', newline='') as csvfile:
             sitemap_file.write(sitemap_contents)
             sitemap_file.close()
             
-            url_count = 0
-            output_counter += 1
-            urlset.clear()
+            url_count += 1
+            if url_count >= max_urls_per_sitemap:
+                url_count = 0
+                output_counter += 1
+                urlset.clear()
 
 if url_count > 0:
     output_file = f'{output_folder}/{output_base_name}_{output_counter}.xml'
