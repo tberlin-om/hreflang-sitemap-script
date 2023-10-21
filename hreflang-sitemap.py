@@ -59,7 +59,7 @@ def generate_sitemap_from_csv(csv_file, threshold=20000):
 
     return sitemaps
 
-sitemaps = generate_sitemap_from_csv('input.csv')
+sitemaps = generate_sitemap_from_csv('hreflang-data.csv')
 
 for idx, sitemap in enumerate(sitemaps):
     sitemap_xml = prettify(sitemap)
