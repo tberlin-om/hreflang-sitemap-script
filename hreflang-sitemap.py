@@ -41,18 +41,30 @@ def generate_sitemap_from_csv(csv_file, threshold=20000):
         headers = next(reader)
 
         for row in reader:
-            main_url = row[0]
-            url_element = SubElement(urlset, 'url')
-            loc_element = SubElement(url_element, 'loc')
-            loc_element.text = main_url
+            for idx, url in enumerate(row):
+                if url:
+                    url_element = SubElement(urlset, 'url')
+                    loc_element = SubElement(url_element, 'loc')
+                    loc_element.text = url
 
-            for idx, alternate_url in enumerate(row):
-                if alternate_url and alternate_url != main_url:
-                    xhtml_element = SubElement(url_element, 'xhtml:link', {
-                        'rel': 'alternate',
-                        'hreflang': headers[idx],
-                        'href': alternate_url
-                    })
+                    alternate_count = 0
+
+                    for sub_idx, alternate_url in enumerate(row):
+                        if alternate_url and idx != sub_idx:
+                            xhtml_element = SubElement(url_element, 'xhtml:link', {
+                                'rel': 'alternate',
+                                'hreflang': headers[sub_idx],
+                                'href': alternate_url
+                            })
+                            alternate_count += 1
+
+                    # Add self reference only if there's at least one alternate URL.
+                    if alternate_count:
+                        xhtml_element = SubElement(url_element, 'xhtml:link', {
+                            'rel': 'alternate',
+                            'hreflang': headers[idx],
+                            'href': url
+                        })
 
     sitemaps = split_large_sitemaps(urlset, threshold)
 
@@ -62,7 +74,7 @@ sitemaps = generate_sitemap_from_csv('hreflang-data.csv')
 
 for idx, sitemap in enumerate(sitemaps):
     sitemap_xml = prettify(sitemap)
-    with open(f'./output/hreflang_sitemap_{idx + 1}.xml', 'w', encoding='utf-8') as file:
+    with open(f'output/hreflang_sitemap_{idx + 1}.xml', 'w', encoding='utf-8') as file:
         file.write(sitemap_xml)
 
 print(f"{len(sitemaps)} Sitemaps wurden generiert!")
