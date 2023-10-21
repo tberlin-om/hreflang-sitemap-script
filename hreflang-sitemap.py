@@ -2,6 +2,21 @@ import csv
 import xml.etree.ElementTree as ET
 import os
 
+def pretty_print(elem, level=0):
+    i = "\n" + level*"  "
+    if len(elem):
+        if not elem.text or not elem.text.strip():
+            elem.text = i + "  "
+        if not elem.tail or not elem.tail.strip():
+            elem.tail = i
+        for elem in elem:
+            pretty_print(elem, level+1)
+        if not elem.tail or not elem.tail.strip():
+            elem.tail = i
+    else:
+        if level and (not elem.tail or not elem.tail.strip()):
+            elem.tail = i
+
 csv_file_path = 'hreflang-data.csv'
 output_folder = 'output'
 output_base_name = 'hreflang_sitemap'
@@ -10,10 +25,6 @@ max_urls_per_sitemap = 20000
 urlset = ET.Element('urlset', xmlns='https://www.sitemaps.org/schemas/sitemap/0.9')
 
 url_count = 0
-
-# Sicherstellen, dass der output-Ordner existiert
-if not os.path.exists(output_folder):
-    os.makedirs(output_folder)
 
 with open(csv_file_path, 'r', newline='') as csvfile:
     csv_reader = csv.reader(csvfile)
@@ -34,6 +45,8 @@ with open(csv_file_path, 'r', newline='') as csvfile:
                 hreflang_entries += 1
                 
         if hreflang_entries > 0:
+            pretty_print(urlset)
+            
             output_file = f'{output_folder}/{output_base_name}_{output_counter}.xml'
             tree = ET.ElementTree(urlset)
             tree.write(output_file, encoding='utf-8', xml_declaration=True)
@@ -58,6 +71,8 @@ with open(csv_file_path, 'r', newline='') as csvfile:
                 urlset.clear()
 
 if url_count > 0:
+    pretty_print(urlset)
+    
     output_file = f'{output_folder}/{output_base_name}_{output_counter}.xml'
     tree = ET.ElementTree(urlset)
     tree.write(output_file, encoding='utf-8', xml_declaration=True)
