@@ -65,6 +65,8 @@ def generate_sitemap_from_csv(csv_file, threshold=20000):
                             'hreflang': headers[idx],
                             'href': url
                         })
+                    else:
+                        urlset.remove(url_element)
 
     sitemaps = split_large_sitemaps(urlset, threshold)
 
