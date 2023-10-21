@@ -1,2 +1,30 @@
 <?xml version='1.0' encoding='utf-8'?>
-<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://example.de</loc><xhtml:link hreflang="de-at" rel="alternate" href="https://example.at" /><xhtml:link hreflang="de-ch" rel="alternate" href="https://example.ch" /></url><url><loc>https://example.de/url-1</loc><xhtml:link hreflang="de-at" rel="alternate" href="https://example.at/url-1" /><xhtml:link hreflang="de-ch" rel="alternate" href="https://example.ch/url-1" /></url><url><loc>https://example.de/url-2</loc><xhtml:link hreflang="de-at" rel="alternate" href="https://example.at/url-2" /><xhtml:link hreflang="de-ch" rel="alternate" href="https://example.ch/url-2" /></url><url><loc>https://example.de/url-3</loc><xhtml:link hreflang="de-at" rel="alternate" href="https://example.at/url-3" /><xhtml:link hreflang="de-ch" rel="alternate" href="https://example.ch/url-3" /></url><url><loc>https://example.de/url-4</loc><xhtml:link hreflang="de-ch" rel="alternate" href="https://example.ch/url-4" /></url><url><loc>https://example.de/url-5</loc></url></urlset>
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://example.de</loc>
+    <xhtml:link hreflang="de-at" rel="alternate" href="https://example.at" />
+    <xhtml:link hreflang="de-ch" rel="alternate" href="https://example.ch" />
+  </url>
+  <url>
+    <loc>https://example.de/url-1</loc>
+    <xhtml:link hreflang="de-at" rel="alternate" href="https://example.at/url-1" />
+    <xhtml:link hreflang="de-ch" rel="alternate" href="https://example.ch/url-1" />
+  </url>
+  <url>
+    <loc>https://example.de/url-2</loc>
+    <xhtml:link hreflang="de-at" rel="alternate" href="https://example.at/url-2" />
+    <xhtml:link hreflang="de-ch" rel="alternate" href="https://example.ch/url-2" />
+  </url>
+  <url>
+    <loc>https://example.de/url-3</loc>
+    <xhtml:link hreflang="de-at" rel="alternate" href="https://example.at/url-3" />
+    <xhtml:link hreflang="de-ch" rel="alternate" href="https://example.ch/url-3" />
+  </url>
+  <url>
+    <loc>https://example.de/url-4</loc>
+    <xhtml:link hreflang="de-ch" rel="alternate" href="https://example.ch/url-4" />
+  </url>
+  <url>
+    <loc>https://example.de/url-5</loc>
+  </url>
+</urlset>
