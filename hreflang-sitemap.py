@@ -7,7 +7,7 @@ output_folder = 'output'
 output_base_name = 'hreflang_sitemap'
 output_counter = 1
 max_urls_per_sitemap = 20000
-urlset = ET.Element('urlset', xmlns='http://www.sitemaps.org/schemas/sitemap/0.9')
+urlset = ET.Element('urlset', xmlns='https://www.sitemaps.org/schemas/sitemap/0.9')
 
 with open(csv_file_path, 'r', newline='') as csvfile:
     csv_reader = csv.reader(csvfile)
@@ -37,8 +37,8 @@ with open(csv_file_path, 'r', newline='') as csvfile:
             sitemap_file.close()
             
             sitemap_contents = '<?xml version="1.0" encoding="UTF-8"?>\n' + sitemap_contents
-            sitemap_contents = '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" ' \
-                               'xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' + sitemap_contents
+            sitemap_contents = '<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9" ' \
+                               'xmlns:xhtml="https://www.w3.org/1999/xhtml">\n' + sitemap_contents
             sitemap_contents += '</urlset>\n'
             
             sitemap_file = open(output_file, 'w', encoding='utf-8')
