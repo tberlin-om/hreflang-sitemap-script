@@ -1,6 +1,9 @@
+import os
 import csv
 from xml.etree.ElementTree import Element, SubElement, ElementTree, tostring
 from xml.dom import minidom
+
+OUTPUT_DIR = "./output/"
 
 def prettify(elem):
     rough_string = tostring(elem, 'utf-8')
@@ -59,11 +62,14 @@ def generate_sitemap_from_csv(csv_file, threshold=20000):
 
     return sitemaps
 
+if not os.path.exists(OUTPUT_DIR):
+    os.makedirs(OUTPUT_DIR)
+
 sitemaps = generate_sitemap_from_csv('hreflang-data.csv')
 
 for idx, sitemap in enumerate(sitemaps):
     sitemap_xml = prettify(sitemap)
-    with open(f'sitemap_{idx + 1}.xml', 'w', encoding='utf-8') as file:
+    with open(f'{OUTPUT_DIR}sitemap_{idx + 1}.xml', 'w', encoding='utf-8') as file:
         file.write(sitemap_xml)
 
 print(f"{len(sitemaps)} Sitemaps wurden generiert!")
