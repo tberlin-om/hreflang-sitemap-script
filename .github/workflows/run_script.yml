@@ -19,4 +19,4 @@ jobs:
         python-version: '3.x'
 
     - name: Run Python Script
-      run: python hreflang_sitemap.py
+      run: python hreflang-sitemap.py
