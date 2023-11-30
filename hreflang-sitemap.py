@@ -1,3 +1,4 @@
+import os
 import csv
 from xml.etree.ElementTree import Element, SubElement, ElementTree, tostring
 from xml.dom import minidom
@@ -70,6 +71,10 @@ def generate_sitemap_from_csv(csv_file, threshold=20000):
     sitemaps = split_large_sitemaps(urlset, threshold)
 
     return sitemaps
+
+# Erstelle das Ausgabeverzeichnis, wenn es nicht vorhanden ist
+output_dir = 'output/'
+os.makedirs(output_dir, exist_ok=True)
 
 sitemaps = generate_sitemap_from_csv('hreflang-data.csv')
 
