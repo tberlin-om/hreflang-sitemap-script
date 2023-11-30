@@ -72,7 +72,6 @@ def generate_sitemap_from_csv(csv_file, threshold=20000):
 
     return sitemaps
 
-# Erstelle das Ausgabeverzeichnis, wenn es nicht vorhanden ist
 output_dir = 'output/'
 os.makedirs(output_dir, exist_ok=True)
 
